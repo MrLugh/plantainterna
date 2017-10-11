@@ -1,0 +1,7 @@
+<ul class="breadcrumb" layout="row">
+  <li flex="nogrow" ng-repeat="step in steps" ng-switch="$last || !!step.abstract" ng-class="{active: $last}">
+    <a md-colors="::{color: '{{$root.getEdificiosSv().getActiveTheme()}}-primary-A100'}" ng-switch-when="false" href="{{step.ncyBreadcrumbLink}}">{{step.ncyBreadcrumbLabel}}</a>
+    <span ng-switch-when="true">{{step.ncyBreadcrumbLabel}}</span>
+    <span class="divider" ng-hide="$last"><md-icon md-font-set="md">keyboard_arrow_right</md-icon></span>
+  </li>
+</ul>

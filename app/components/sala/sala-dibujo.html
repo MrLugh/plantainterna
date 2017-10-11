@@ -1,0 +1,40 @@
+<div class="sala">
+
+	<cromo-panel cromo-panel-full-height>
+
+		<md-content class="sala-container">
+
+			<div ng-repeat="hall in halls" ng-class="{'sala_pasillo':hall.type == 'Pasillo','sala_fila':hall.type == 'Fila'}" ng-style="getHallStyle()">
+
+				<div ng-if="hall.type == 'Pasillo'">&nbsp;</div>
+
+				<div ng-if="hall.type == 'Fila'">
+
+					<div class="numeroFila" ng-click="$root.getEdificiosSv().setActiveElement(hall.fila);">F {{hall.fila.nombre}}</div>
+
+					<ul layout="row" class="sala_fila_posiciones">
+						
+						<li flex ng-repeat="position in hall.positions" class="sala_fila_posicion" ng-class="{'sala_posicion_rack':position.rack,'sala_posicion_libre':!position.rack && position.type != 'PasilloVertical','sala_posicion_pasillo':position.type == 'PasilloVertical'}">
+
+							<div ng-if="position.type == 'Hueco'" class="numeroHueco" md-colors="::{backgroundColor: '{{$root.getEdificiosSv().getActiveTheme()}}-warn-100'}"> </div>
+							<div ng-if="position.type == 'PasilloVertical'" class="numeroPasilloVertical"> </div>
+
+							<div ng-if="position.type == 'Rack'" class="numeroRack" ng-click="setActiveElement(position.rack);" ui-sref-active="active" ui-sref="edificios.edificio.sala.rack({ filaId: hall.fila.id, rackId: position.rack.id })" md-colors="::{backgroundColor: '{{$root.getEdificiosSv().getActiveTheme()}}-primary-200'}">
+
+								<span>{{position.rack.nombre}}</span>
+
+							</div>
+
+						</li>
+
+					</ul>
+
+				</div>
+
+		  </div>
+
+		</md-content>
+
+	</cromo-panel>
+
+</div>

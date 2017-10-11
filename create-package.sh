@@ -1,0 +1,1 @@
+tar -czvf plantainterna.tar.gz ./ --exclude=./node_modules --exclude=./app/bower_components --exclude=*lock*.*

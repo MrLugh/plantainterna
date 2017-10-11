@@ -1,0 +1,38 @@
+<div class="edificio">
+
+	<cromo-panel>
+
+		<md-content class="edificio-container" restrict-full-height>
+
+			<div ng-repeat="piso in $ctrl.element.pisos" class="edificio_piso">
+
+				<div layout="column">
+					<span flex class="nombrePiso" ng-click="setActive(piso);">Piso {{piso.nombre.toLowerCase()}}</span>
+	       
+	       	<md-input-container>
+
+          	<label>{{piso.salas.length > 1 ? piso.salas.length + ' salas' : piso.salas.length + ' sala'}}</label>
+
+	       		<md-select ng-model="selectedSala[piso.id]" ng-change="setActive(piso)">
+	       			
+	       			<md-option ng-value="null">
+	       				<em>Elegir</em>
+	       			</md-option>
+							
+							<md-option ng-repeat="sala in piso.salas" ng-value="sala" ng-click="setActive(piso)">
+								{{sala.nombre.toLowerCase()}}
+							</md-option>
+
+	       		</md-select>
+
+	       	</md-input-container>
+
+			  </div>
+
+		  </div>
+
+		</md-content>
+
+	</cromo-panel>
+
+</div>

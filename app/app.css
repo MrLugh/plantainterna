@@ -1,0 +1,307 @@
+/* app css stylesheet */
+* {
+	/*box-sizing: border-box!important;*/
+}
+
+ul, li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+svg, svg *, .unselected {
+	-webkit-user-select: none;
+	/* Chrome all / Safari all */
+	-moz-user-select: none;
+	/* Firefox all */
+	-ms-user-select: none;
+	/* IE 10+ */
+	user-select: none;
+	/* Likely future */ 	
+}
+
+*[ui-sref], *[ng-click] {
+	cursor: pointer;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.transparent {
+	opacity: 0;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: 0px none #ffffff;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background: #999;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #3f3f3f;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none #ffffff;
+}
+::-webkit-scrollbar-track:hover {
+  background: #e1e1e1;
+}
+::-webkit-scrollbar-track:active {
+  background: #f3f3f3;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.cromo-menu-main {
+	padding: 8px;
+}
+
+.cromo-menu-main .breadcrumb {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.cromo-menu-main .breadcrumb li {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+/* sidenav */
+md-sidenav {
+	max-height: 100%;
+	overflow-y: hidden;
+}
+
+.busqueda-link {
+	white-space: inherit;
+	text-align: left;
+	text-transform: none;
+}
+
+/* Cromo panel */
+.cromo-panel {
+	position: static;
+	overflow: hidden;
+	z-index: 1;
+	margin: 0 10px;
+	border: 1px solid #e3e3e3;
+	transition: all 0.4s ease-out;
+}
+
+.cromo-panel:hover {
+	box-shadow: 0 5px 6px -3px rgba(0,0,0,.2), 0 9px 12px 1px rgba(0,0,0,.14), 0 3px 16px 2px rgba(0,0,0,.12);
+}
+
+.cromo-panel-maximized {
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;	
+	margin: 0;
+	padding: 0;
+	z-index: 21;
+	border: none;
+}
+
+.cromo-panel-container {
+	position: relative;
+  transition: all 0.4s ease-out;
+}
+
+.cromo-panel-maximized .cromo-panel-container {
+	height: 100%;
+	max-width: 100%;
+}
+
+/* Edificios */
+
+
+/* Edificio Dibujo */
+.edificio {
+
+}
+
+.edificio-container {
+	width: 100%;
+	margin: 0 auto;
+	overflow-x: hidden;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.cromo-panel-maximized .edificio-container {
+	height: 100%;
+}
+
+.edificio_piso {
+	margin: 0 auto;
+	width:  200px;
+	padding: 8px;
+	border: 1px solid #e3e3e3;
+	border-top: none;
+}
+
+.edificio_piso md-input-container {
+	margin-bottom: 0;
+}
+
+.edificio_piso md-select-value {
+	border:none;
+}
+
+.nombrePiso {
+	font-size: 12px;
+}
+
+.numeroSalas {
+	display: inline-block;
+	font-style: italic;
+	font-size: 0.8rem;	
+}
+
+/* Sala dibujo */
+
+.sala-container {
+	font-size: 9px;
+	margin: 0 auto;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.sala .cromo-panel-container {
+
+}
+
+.sala .cromo-panel-maximized .cromo-panel-container {
+	width: 100%;
+}
+
+.sala_pasillo {
+	width: 100%;
+}
+
+.sala_fila {
+
+}
+
+.sala_fila_posiciones {
+	text-align: left;
+	margin-left: 40px;
+}
+
+.sala_fila_posicion {
+	text-align: center;
+	position: relative;
+	flex-grow: 1;
+}
+
+.numeroHueco {
+	width: 100%;
+	height: 100%;
+}
+
+.numeroPasilloVertical {
+	width: 100%;
+	height: 100%;
+}
+
+.sala_posicion_libre {
+	border: 1px solid #e3e3e3;
+}
+
+.sala_posicion_libre md-icon {
+	transition: all 0.4s ease-out;
+	border-radius: 50%;
+	opacity: 0.3;
+}
+
+.sala_posicion_libre md-icon:hover {
+	opacity: 1;
+}
+
+.sala_posicion_rack {
+	border: 1px solid #e3e3e3;
+	/*
+	background-image: url('img/cabinet.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	*/
+}
+
+.numeroFila {
+	width: 40px;
+	float: left;
+	text-align: center;
+}
+
+.numeroRack {
+
+}
+
+/* Rack */
+
+.rack {
+
+}
+
+.rack-container {
+	position: relative;
+	max-width: 200px;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	text-align: center;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.cromo-panel-maximized .rack-container {
+	max-width: 100%;
+}
+
+.rack .cromo-panel-maximized, .rack .cromo-panel-container {
+	transition: none;
+}
+
+.rack .cromo-panel-maximized .cromo-panel-container {
+	padding: 0;
+}
+
+#rack-draw-controls {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+/* Rack draw */
+#rack-draw {
+	width: 100%;
+	height: 100%;
+	min-width: 200px;
+	min-height: 200px;
+}

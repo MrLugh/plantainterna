@@ -1,0 +1,51 @@
+<div ng-class="{'cromo-panel-maximized':cromoPanelModel.maximized}" class="cromo-panel md-accent" ng-style="getCromoPanelStyle()">
+
+	<md-toolbar md-scroll-shrink class="md-accent">
+	 
+	 	<div class="md-toolbar-tools" style="position: relative;">
+
+	 		<span class="md-title"><strong>{{$ctrl.element.nombre.toLowerCase()}}</strong></span>
+
+	 		<span style="position: absolute;top: 0;left: 16px;font-size: 12px;">{{$ctrl.element.entidad}}</span>
+
+	 		<md-menu>
+
+	      <md-button aria-label="Menu" class="md-icon-button" ng-click="openPanelMenu($mdMenu, $event)">
+	        <md-icon md-font-set="md">more_vert</md-icon>
+	      </md-button>
+
+	      <md-menu-content>
+
+	      	<md-menu-item>
+
+				    <md-button aria-label="Atributos" class="md-button" ng-click="$root.getEdificiosSv().panelElementShowBy($ctrl.element)">
+				      <md-icon md-font-set="md">info</md-icon>
+				      Ver Atributos
+				    </md-button>
+
+				  </md-menu-item>
+
+				  <md-menu-item>
+
+				    <md-button aria-label="Maximizar" class="md-button" ng-click="toggle()">
+				      <md-icon md-font-set="md">{{cromoPanelModel.maximized ? 'indeterminate_check_box' : 'open_in_new' }}</md-icon>
+				      {{cromoPanelModel.maximized ? 'Minimizar' : 'Maximizar' }}
+				    </md-button>
+
+				  </md-menu-item>
+
+			  </md-menu-content>
+
+	 		</md-menu>
+
+	 		<span flex></span>
+
+	  </div>
+	  
+	</md-toolbar>
+
+	<div class="cromo-panel-container">
+		<ng-transclude></ng-transclude>
+	</div>
+
+</div>

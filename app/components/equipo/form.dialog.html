@@ -1,0 +1,140 @@
+<md-dialog aria-label="Creación de Equipo" flex>
+
+	<form name="equipoForm" ng-submit="validate()">
+
+	  <md-toolbar md-colors="::{background: '{{$root.getEdificiosSv().getActiveTheme()}}-primary'}">
+	    <div class="md-toolbar-tools">
+	      <h2>Creación de Equipo</h2>
+	      <span flex></span>
+	      <md-button class="md-icon-button" ng-click="cancel()">
+	        <md-icon md-font-set="md">close</md-icon>
+	      </md-button>
+	    </div>
+	  </md-toolbar>
+
+	  <md-dialog-content flex>
+	    <div class="md-dialog-content">
+
+	    	<div layout="row">
+
+	      	<div layout="column" layout-padding flex="50">
+
+	      		<div layout="row">
+	      
+							<md-input-container class="md-block" flex>
+							  <label>Nombre</label>
+							  <input md-autofocus type="text" name="nombre" required ng-model="model.nombre" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')">
+			          <div ng-messages="equipoForm.nombre.$error">
+			            <div ng-message="required">Campo requerido.</div>
+			          </div>
+							</md-input-container>
+
+							<md-input-container class="md-block" flex>
+							  <label>Mnemonico</label>
+							  <input type="text" name="mnemonico" required ng-model="model.mnemonico" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')">
+			          <div ng-messages="equipoForm.mnemonico.$error">
+			            <div ng-message="required">Campo requerido.</div>
+			          </div>
+							</md-input-container>
+
+						</div>
+
+						<div layout="row">
+
+							<md-input-container class="md-block" flex>
+							  <label>Modelo</label>
+							  <input type="text" name="modelo" required ng-model="model.modelo" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')">
+			          <div ng-messages="equipoForm.modelo.$error">
+			            <div ng-message="required">Campo requerido.</div>
+			          </div>
+							</md-input-container>
+
+							<md-input-container class="md-block" flex>
+							  <label>Tipo Equipo</label>
+			       		<md-select name="tipo" required ng-model="model.tipo" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')">
+			       			<md-option ng-value="null">
+			       				<em>Elegir</em>
+			       			</md-option>
+									<md-option ng-repeat="tipo in tipos" ng-value="tipo.nombre">{{tipo.nombre}}</md-option>
+			       		</md-select>
+			          <div ng-messages="equipoForm.tipo.$error">
+			            <div ng-message="required">Campo requerido.</div>
+			          </div>
+							</md-input-container>
+
+						</div>
+
+						<div layout="row">
+
+							<md-input-container class="md-block" flex>
+
+							  <label>Posición inicio</label>
+			       		<md-select name="posicionInicio" required ng-model="model.posicionInicio" ng-change="createPosicionesFin()" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')">
+			       			<md-option ng-value="null">
+			       				<em>Elegir</em>
+			       			</md-option>
+									<md-option ng-repeat="posicion in posicionesInicio" ng-value="posicion">{{posicion}}</md-option>
+			       		</md-select>
+			          <div ng-messages="equipoForm.posicionInicio.$error">
+			            <div ng-message="required">Campo requerido.</div>
+			          </div>
+							</md-input-container>
+
+							<md-input-container class="md-block" flex>
+
+							  <label>Posición Final</label>
+			       		<md-select name="posicionFin" required ng-model="model.posicionFin" ng-disabled="model.posicionInicio === null" oninvalid="this.setCustomValidity('Campo requerido')" oninput="setCustomValidity('')">
+			       			<md-option ng-value="null">
+			       				<em>Elegir</em>
+			       			</md-option>
+									<md-option ng-repeat="posicion in posicionesFin" ng-value="posicion">{{posicion}}</md-option>
+			       		</md-select>
+			          <div ng-messages="equipoForm.posicionFin.$error">
+			            <div ng-message="required">Campo requerido.</div>
+			          </div>
+							</md-input-container>
+
+						</div>
+
+					</div>
+
+					<div layout="column" layout-padding flex="50">
+
+						<md-input-container class="md-icon-float md-icon-right md-block" flex>
+				      <label>Topologías</label>
+				      <md-icon md-font-set="md" ng-click="createTopologyResults()">search</md-icon>
+				      <input ng-disabled="search.searching" type="text" name="value" ng-model="search.value" placeholder="Ingrese un valor..."/>
+				    </md-input-container>
+
+						<md-input-container ng-if="search.results.length" class="md-icon-float md-block" flex>
+						  <label>Equipos para <mark>{{search.value}}</mark></label>
+						  <md-select name="topologias"
+						  					 ng-model="search.topologias"
+						             data-md-container-class="edificiosSearchSelect"
+						             multiple>
+						    <md-optgroup label="Topologías - Equipo">
+						      <md-option ng-value="result" ng-repeat="result in search.results |
+						        filter:search.value">{{result.label}}</md-option>
+						    </md-optgroup>
+						  </md-select>
+
+						</md-input-container>
+
+						<span flex></span>
+
+					</div>
+
+				</div>
+
+			</div>
+		</md-dialog-content>
+
+	  <md-dialog-actions layout="row">
+	    <span flex></span>
+	    <md-button ng-click="cancel()">Cancelar</md-button>
+	    <md-button type="submit" class="md-primary">Guardar</md-button>
+	  </md-dialog-actions>
+
+  </form>
+
+</md-dialog>
